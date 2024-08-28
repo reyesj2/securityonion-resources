@@ -1,0 +1,19 @@
+title: Security Onion - Second custom rule
+id: 37379ef6-95e7-4025-bd19-f862e9e41e21
+status: experimental
+description: Customized description
+license: None
+author: 'Security Onion Solutions'
+date: 2024/8/28
+logsource:
+    product: linux
+    service: auth
+detection:
+    selection:
+        process.name: 'login'
+        event.outcome: 'success'
+        tags|contains: 'so-grid-node' # Only generate alerts for Grid Nodess
+    condition: selection
+falsepositives:
+    - none
+level: low
